@@ -6,6 +6,51 @@ import org.junit.*;
 public class Day5Test {
 
     @Test
+    public void testPairs1() {
+        Assert.assertTrue(Day5.continsTwoPairs("xyxy"));
+    }
+
+    @Test
+    public void testPairs2() {
+        Assert.assertTrue(Day5.continsTwoPairs("aaaa"));
+    }
+
+    @Test
+    public void testPairs3() {
+        Assert.assertTrue(Day5.continsTwoPairs("aabcdefgaa"));
+    }
+
+    @Test
+    public void testPairs4() {
+        Assert.assertFalse(Day5.continsTwoPairs("aaa"));
+    }
+
+    @Test
+    public void testBetween1() {
+        Assert.assertTrue(Day5.containsPairWithLetterBetween("xyx"));
+    }
+
+    @Test
+    public void testBetween2() {
+        Assert.assertTrue(Day5.containsPairWithLetterBetween("abcdefeghi"));
+    }
+
+    @Test
+    public void testBetween3() {
+        Assert.assertTrue(Day5.containsPairWithLetterBetween("aaa"));
+    }
+
+    @Test
+    public void testBetween4() {
+        Assert.assertFalse(Day5.containsPairWithLetterBetween("aa"));
+    }
+
+    @Test
+    public void testBetween5() {
+        Assert.assertFalse(Day5.containsPairWithLetterBetween("asdfghjklqwertyuio"));
+    }
+
+    @Test
     public void testVowels1() {
         String s = "aei";
         boolean result = Day5.hasThreeVowels(s);
