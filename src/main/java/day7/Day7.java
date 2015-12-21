@@ -2,6 +2,7 @@ package day7;
 
 import day7.operation.And;
 import day7.operation.Input;
+import day7.operation.Or;
 import day7.operation.Output;
 
 import java.io.BufferedReader;
@@ -27,7 +28,7 @@ public class Day7 {
         List<Input> inputsAnd = new ArrayList<Input>();
         inputsAnd.add(xNull);
         inputsAnd.add(yNull);
-        And and = new And(inputsAnd, new Output("d", null));
+        Or and = new Or(inputsAnd, new Output("d", null));
 
         OperationsManager om = new OperationsManager();
         om.add(x);
