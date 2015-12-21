@@ -13,17 +13,16 @@ public class Day6 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader("day_6.txt"));
         String line = "";
-
-        int result = 0;
+        Grid grid = new Grid();
 
         while (line != null) {
             line = br.readLine();
             if (line == null)
                 continue;
-
+            grid.parse(line);
         }
         br.close();
-        System.out.println(result);
+        System.out.println(grid.countLitLights());
     }
 
 

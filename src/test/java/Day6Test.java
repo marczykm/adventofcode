@@ -71,4 +71,26 @@ public class Day6Test {
         grid.turnOn(0,0,2,2);
         Assert.assertEquals(9, grid.countLitLights());
     }
+
+    @Test
+    public void testParseOn() {
+        Grid grid = new Grid();
+        grid.parse("turn on 0,0 through 2,2");
+        Assert.assertEquals(9, grid.countLitLights());
+    }
+
+    @Test
+    public void testParseOff() {
+        Grid grid = new Grid();
+        grid.parse("turn on 0,0 through 2,2");
+        grid.parse("turn off 0,0 through 2,2");
+        Assert.assertEquals(0, grid.countLitLights());
+    }
+
+    @Test
+    public void testParseToggle() {
+        Grid grid = new Grid();
+        grid.parse("toggle 0,0 through 2,2");
+        Assert.assertEquals(9, grid.countLitLights());
+    }
 }
