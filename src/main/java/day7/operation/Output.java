@@ -27,4 +27,12 @@ public class Output {
     public void setValue(Integer value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Output{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

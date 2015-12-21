@@ -23,4 +23,12 @@ public class Input  {
     public Integer getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "Input{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }
