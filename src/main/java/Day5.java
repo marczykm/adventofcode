@@ -20,7 +20,7 @@ public class Day5 {
             line = br.readLine();
             if (line == null)
                 continue;
-            if (hasThreeVowels(line) && hasDoubleLetters(line) && !hasDisallowedStrings(line))
+            if (continsTwoPairs(line) && containsPairWithLetterBetween(line))
                 result++;
         }
         br.close();
@@ -52,6 +52,37 @@ public class Day5 {
         for (String d : disallowed)
             if (line.contains(d))
                 return true;
+        return false;
+    }
+
+    public static boolean continsTwoPairs(String line) {
+        int i = 0;
+        while(i < line.length() - 1){
+            String temp  = line;
+            String firstChar = line.charAt(i) + "";
+            String secondChar = line.charAt(++i) + "";
+            String pair = firstChar + secondChar;
+            temp = temp.replaceAll(pair, "");
+            if ( (line.length() - temp.length()) >= 4)
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean containsPairWithLetterBetween(String line) {
+        int i = 0;
+        if (line.length() < 3)
+            return false;
+        while(i < line.length()-2){
+            if (i >= line.length())
+                return false;
+            String firstChar = line.charAt(i) + "";
+            String thirdChar = line.charAt(i+2) + "";
+
+            if ( firstChar.equals(thirdChar))
+                return true;
+            i++;
+        }
         return false;
     }
 
