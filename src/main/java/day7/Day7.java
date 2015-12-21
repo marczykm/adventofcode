@@ -1,9 +1,6 @@
 package day7;
 
-import day7.operation.And;
-import day7.operation.Input;
-import day7.operation.Or;
-import day7.operation.Output;
+import day7.operation.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,8 +24,10 @@ public class Day7 {
         Input yNull = new Input("y", null);
         List<Input> inputsAnd = new ArrayList<Input>();
         inputsAnd.add(xNull);
-        inputsAnd.add(yNull);
-        Or and = new Or(inputsAnd, new Output("d", null));
+//        inputsAnd.add(yNull);
+//        And and = new And(inputsAnd, new Output("d", null));
+//        Or and = new Or(inputsAnd, new Output("d", null));
+        Not and = new Not(inputsAnd, new Output("d", null));
 
         OperationsManager om = new OperationsManager();
         om.add(x);
