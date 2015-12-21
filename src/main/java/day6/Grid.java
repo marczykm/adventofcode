@@ -20,29 +20,30 @@ public class Grid {
     public void turnOn(int startX, int startY, int endX, int endY){
         for (int i = startX; i <= endX; i++)
             for (int j = startY; j <= endY; j++)
-                lights[i][j].on();
+                lights[i][j].turnUp();
     }
 
     public void turnOff(int startX, int startY, int endX, int endY) {
         for (int i = startX; i <= endX; i++)
             for (int j = startY; j <= endY; j++)
-                lights[i][j].off();
+                lights[i][j].turnDown();
     }
 
     public void toggle(int startX, int startY, int endX, int endY) {
         for (int i = startX; i <= endX; i++)
-            for (int j = startY; j <= endY; j++)
-                lights[i][j].toggle();
+            for (int j = startY; j <= endY; j++) {
+                lights[i][j].turnUp();
+                lights[i][j].turnUp();
+            }
     }
 
-    public int countLitLights(){
-        int lit = 0;
+    public int getTotalBrightness(){
+        int totalBrightness = 0;
 
         for (int i = 0; i <= WIDTH; i++)
             for (int j = 0; j <= HEIGHT; j++)
-                if (lights[i][j].getStatus() == LightStatus.ON)
-                    lit++;
-        return lit;
+                totalBrightness += lights[i][j].getBrightness();
+        return totalBrightness;
     }
 
     public void parse(String line) {

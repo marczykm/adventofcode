@@ -22,7 +22,7 @@ public class Day6 {
             grid.parse(line);
         }
         br.close();
-        System.out.println(grid.countLitLights());
+        System.out.println(grid.getTotalBrightness());
     }
 
 
