@@ -18,7 +18,8 @@ public class Not extends Operation {
         Integer value = values.get(i.getName());
         if (value == null)
             return null;
-        outputValue = 65535 - value;
+        outputValue = ~value;
+
         output.setValue(outputValue);
 
         return output;

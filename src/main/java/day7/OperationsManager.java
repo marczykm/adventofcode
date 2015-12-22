@@ -11,11 +11,13 @@ public class OperationsManager {
     private List<Operation> operations;
     private Map<String, Integer> values;
     private List<String> lines;
+    private List<String> notParsed;
 
     public OperationsManager() {
         operations = new ArrayList<Operation>();
         values = new HashMap<String, Integer>();
         lines = new ArrayList<String>();
+        notParsed = new ArrayList<String>();
     }
 
     public void add(Input input){
@@ -32,12 +34,23 @@ public class OperationsManager {
     }
 
     public void parse(String line) {
+        String original = line;
         lines.add(line);
         if (line.contains("AND")){
             line = line.replace("AND ", "").replace("-> ", "");
             String[] splitted = line.split(" ");
-            Input i1 = new Input(splitted[0], null);
-            Input i2 = new Input(splitted[1], null);
+            Input i1 = null;
+            if (isNumeric(splitted[0]) == null) {
+                i1 = new Input(splitted[0], null);
+            } else {
+                i1 = new Input((new Date()).hashCode()+"", isNumeric(splitted[0]));
+            }
+            Input i2 = null;
+            if (isNumeric(splitted[1]) == null) {
+                i2 = new Input(splitted[1], null);
+            } else {
+                i2 = new Input((new Date()).hashCode()+"", isNumeric(splitted[1]));
+            }
             List<Input> inputs = new ArrayList<Input>();
             inputs.add(i1);
             inputs.add(i2);
@@ -48,8 +61,18 @@ public class OperationsManager {
         if (line.contains("OR")){
             line = line.replace("OR ", "").replace("-> ", "");
             String[] splitted = line.split(" ");
-            Input i1 = new Input(splitted[0], null);
-            Input i2 = new Input(splitted[1], null);
+            Input i1 = null;
+            if (isNumeric(splitted[0]) == null) {
+                i1 = new Input(splitted[0], null);
+            } else {
+                i1 = new Input((new Date()).hashCode()+"", isNumeric(splitted[0]));
+            }
+            Input i2 = null;
+            if (isNumeric(splitted[1]) == null) {
+                i2 = new Input(splitted[1], null);
+            } else {
+                i2 = new Input((new Date()).hashCode()+"", isNumeric(splitted[1]));
+            }
             List<Input> inputs = new ArrayList<Input>();
             inputs.add(i1);
             inputs.add(i2);
@@ -60,9 +83,18 @@ public class OperationsManager {
         if (line.contains("LSHIFT")){
             line = line.replace("LSHIFT ", "").replace("-> ", "");
             String[] splitted = line.split(" ");
-            Input i1 = new Input(splitted[0], null);
-            String hash = (new Date()).hashCode()+"";
-            Input i2 = new Input(hash, Integer.parseInt(splitted[1]));
+            Input i1 = null;
+            if (isNumeric(splitted[0]) == null) {
+                i1 = new Input(splitted[0], null);
+            } else {
+                i1 = new Input((new Date()).hashCode()+"", isNumeric(splitted[0]));
+            }
+            Input i2 = null;
+            if (isNumeric(splitted[1]) == null) {
+                i2 = new Input(splitted[1], null);
+            } else {
+                i2 = new Input((new Date()).hashCode()+"", isNumeric(splitted[1]));
+            }
             List<Input> inputs = new ArrayList<Input>();
             inputs.add(i1);
             inputs.add(i2);
@@ -73,9 +105,18 @@ public class OperationsManager {
         if (line.contains("RSHIFT")){
             line = line.replace("RSHIFT ", "").replace("-> ", "");
             String[] splitted = line.split(" ");
-            Input i1 = new Input(splitted[0], null);
-            String hash = (new Date()).hashCode()+"";
-            Input i2 = new Input(hash, Integer.parseInt(splitted[1]));
+            Input i1 = null;
+            if (isNumeric(splitted[0]) == null) {
+                i1 = new Input(splitted[0], null);
+            } else {
+                i1 = new Input((new Date()).hashCode()+"", isNumeric(splitted[0]));
+            }
+            Input i2 = null;
+            if (isNumeric(splitted[1]) == null) {
+                i2 = new Input(splitted[1], null);
+            } else {
+                i2 = new Input((new Date()).hashCode()+"", isNumeric(splitted[1]));
+            }
             List<Input> inputs = new ArrayList<Input>();
             inputs.add(i1);
             inputs.add(i2);
@@ -105,6 +146,8 @@ public class OperationsManager {
                     values.put(splitted[0], null);
                     values.put(splitted[1], null);
                     input = null;
+                    if (!notParsed.contains(original))
+                        notParsed.add(original);
                 }
             }
             if (input != null)
@@ -123,11 +166,15 @@ public class OperationsManager {
                 }
             }
             if (toRemove.size() == 0) {
-                break;
+                for(String s : notParsed){
+                    parse(s);
+                }
             }
             operations.removeAll(toRemove);
+            System.out.println(howManyNulls());
         }
         printValues();
+        System.out.println(values.get("a"));
     }
 
     private void printValues(){
@@ -141,5 +188,25 @@ public class OperationsManager {
                 return true;
         }
         return false;
+    }
+
+    private int howManyNulls() {
+        int nulls = 0;
+        for(Integer value : values.values()){
+            if (value == null)
+                nulls++;
+        }
+        return nulls;
+    }
+
+    private Integer isNumeric(String s){
+        Integer num = null;
+        try {
+            num = Integer.parseInt(s);
+        } catch (Exception e){
+            return null;
+        }finally {
+            return num;
+        }
     }
 }
