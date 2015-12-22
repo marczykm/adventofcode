@@ -12,11 +12,11 @@ public class RShift extends Operation {
     }
 
     @Override
-    public Output solve(Map<String, Integer> values) {
-        Integer outputValue = null;
+    public Output solve(Map<String, Long> values) {
+        Long outputValue = null;
         Input i1 = inputs.get(0);
         Input i2 = inputs.get(1);
-        Integer value = values.get(i1.getName());
+        Long value = values.get(i1.getName());
         if (value == null)
             return null;
         outputValue = value >> i2.getValue();

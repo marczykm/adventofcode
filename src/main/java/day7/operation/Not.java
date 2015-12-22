@@ -12,13 +12,13 @@ public class Not extends Operation {
     }
 
     @Override
-    public Output solve(Map<String, Integer> values) {
-        Integer outputValue = null;
+    public Output solve(Map<String, Long> values) {
+        Long outputValue = null;
         Input i = inputs.get(0);
-        Integer value = values.get(i.getName());
+        Long value = values.get(i.getName());
         if (value == null)
             return null;
-        outputValue = ~value;
+        outputValue = 65536 + ~value;
 
         output.setValue(outputValue);
 

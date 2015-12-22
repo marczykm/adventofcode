@@ -13,10 +13,10 @@ public class And extends Operation {
     }
 
     @Override
-    public Output solve(Map<String, Integer> values) {
-        Integer outputValue = null;
+    public Output solve(Map<String, Long> values) {
+        Long outputValue = null;
         for (Input i : inputs){
-            Integer value = values.get(i.getName());
+            Long value = values.get(i.getName());
             if (value == null)
                 return null;
             if (outputValue == null)

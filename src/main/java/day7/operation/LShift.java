@@ -12,14 +12,17 @@ public class LShift extends Operation {
     }
 
     @Override
-    public Output solve(Map<String, Integer> values) {
-        Integer outputValue = null;
+    public Output solve(Map<String, Long> values) {
+        Long outputValue = null;
         Input i1 = inputs.get(0);
         Input i2 = inputs.get(1);
-        Integer value = values.get(i1.getName());
+        Long value = values.get(i1.getName());
         if (value == null)
             return null;
         outputValue = value << i2.getValue();
+        if (outputValue > 65535){
+            outputValue = outputValue - 65535 - 1;
+        }
         output.setValue(outputValue);
 
         return output;

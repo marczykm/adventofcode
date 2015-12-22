@@ -9,9 +9,9 @@ import java.util.Map;
  */
 public class Input  {
     private String name;
-    private Integer value;
+    private Long value;
 
-    public Input (String name, Integer value) {
+    public Input (String name, Long value) {
         this.name = name;
         this.value = value;
     }
@@ -20,7 +20,7 @@ public class Input  {
         return name;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 

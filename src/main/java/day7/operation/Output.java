@@ -5,9 +5,9 @@ package day7.operation;
  */
 public class Output {
     private String name;
-    private Integer value;
+    private Long value;
 
-    public Output(String name, Integer value) {
+    public Output(String name, Long value) {
         this.name = name;
         this.value = value;
     }
@@ -20,11 +20,11 @@ public class Output {
         this.name = name;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 

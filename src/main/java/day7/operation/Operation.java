@@ -24,5 +24,5 @@ public abstract class Operation {
         return output;
     }
 
-    public abstract Output solve(Map<String, Integer> values);
+    public abstract Output solve(Map<String, Long> values);
 }
