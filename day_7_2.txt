@@ -52,7 +52,7 @@ NOT ft -> fu
 jn OR jo -> jp
 iv OR jb -> jc
 hv OR hu -> hw
-19138 -> b
+16076 -> b
 gj RSHIFT 5 -> gm
 hq AND hs -> ht
 dy RSHIFT 1 -> er
@@ -76,6 +76,7 @@ kh LSHIFT 1 -> lb
 NOT ey -> ez
 NOT di -> dj
 dz OR ef -> eg
+lx -> a
 NOT iz -> ja
 gz LSHIFT 15 -> hd
 ce OR cd -> cf
@@ -195,7 +196,7 @@ iw AND ix -> iz
 lf RSHIFT 1 -> ly
 iu OR jf -> jg
 NOT dm -> dn
-lw OR lv -> a
+lw OR lv -> lx
 gg LSHIFT 1 -> ha
 lr AND lt -> lu
 fm OR fn -> fo

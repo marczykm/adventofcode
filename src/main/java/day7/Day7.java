@@ -14,7 +14,7 @@ public class Day7 {
     private static final String EMPTY_STRING = "";
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new FileReader("day_7.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("day_7_2.txt"));
         String line = "";
 
         OperationsManager om = new OperationsManager();
