@@ -21,12 +21,12 @@ public class Day8 {
             if (line == null)
                 continue;
             all += line.length();
-            String parsed = Parser.parse(line);
-            result += parsed.length();
-//            System.out.println(line);
+            String parsed = Parser.encode(line);
+            result += parsed.length()+2;
+            System.out.println(line + " : " + parsed);
         }
         br.close();
-        System.out.println(all + "-" + result + "= " + (all-result));
+        System.out.println(result + "-" + all + "= " + (result-all));
     }
 
 
